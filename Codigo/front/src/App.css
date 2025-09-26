@@ -1,205 +1,278 @@
-/* Paleta de tons pastéis de amarelo */
-:root {
-  --pastel-yellow-light: #FFFACD; /* Lemon Chiffon */
-  --pastel-yellow-medium: #F0E68C; /* Khaki */
-  --pastel-yellow-dark: #DAA520; /* Goldenrod */
-  --text-color: #333;
-  --error-color: #D32F2F;
-  --border-color: #CCC;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background-color: var(--pastel-yellow-light);
-  color: var(--text-color);
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.App {
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 900px;
-  text-align: center;
-}
-
-header {
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--border-color);
+/* ==========================================================================
+   CABEÇALHO (NAVBAR)
+   ========================================================================== */
+.app-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 30px;
+  background-color: #f3f1e7; /* ADICIONE ESTA LINHA - Um tom um pouco diferente para destacar */
+  padding: 20px 40px;      /* ALTERE ESTA LINHA - Adiciona o espaçamento interno */
 }
 
-header h1 {
-  color: var(--pastel-yellow-dark);
+.app-title {
+  font-size: 2.8em;
+  font-weight: bold;
   margin: 0;
 }
 
-header button {
-  background-color: var(--pastel-yellow-dark);
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-header button:hover {
-  background-color: #B8860B; /* Darker Goldenrod */
-}
-
-/* Login Component */
-.login-container, .form-container, .list-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  margin-bottom: 20px;
-}
-
-.login-container h2, .form-container h2, .list-container h2 {
-  color: var(--pastel-yellow-dark);
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
-form div {
-  margin-bottom: 15px;
-  text-align: left;
-}
-
-form label {
-  display: block;
-  margin-bottom: 5px;
+.logout-button {
+  background-color: #f6dc9b;
+  color: #a36c2f;
   font-weight: bold;
-}
-
-form input[type="text"],
-form input[type="password"],
-form input[type="number"],
-form input[type="date"] {
-  width: calc(100% - 22px); /* Adjust for padding and border */
-  padding: 10px;
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-form button {
-  background-color: var(--pastel-yellow-medium);
-  color: var(--text-color);
   border: none;
   padding: 12px 25px;
-  border-radius: 5px;
+  border-radius: 20px;
+  font-size: 1em;
   cursor: pointer;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
+  font-family: "Times New Roman", Times, serif;
 }
 
-form button:hover {
-  background-color: var(--pastel-yellow-dark);
-  color: #fff;
-}
-
-.error {
-  color: var(--error-color);
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-/* Main Content Layout */
-.main-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-
-@media (min-width: 768px) {
-  .main-content {
-    grid-template-columns: 1fr 2fr; /* Formulário menor, lista maior */
-  }
-}
-
-/* Product List */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-table th,
-table td {
-  border: 1px solid var(--border-color);
-  padding: 10px;
-  text-align: left;
-}
-
-table th {
-  background-color: var(--pastel-yellow-medium);
-  color: var(--text-color);
-  font-weight: bold;
-}
-
-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.near-expiry {
-  background-color: #FFDDC1; /* Um tom de pêssego/laranja pastel para destaque */
-  font-weight: bold;
-}
-
-.near-expiry-legend {
-  font-size: 0.9em;
-  color: #666;
-  margin-top: 15px;
-  text-align: left;
-}
-
-.report-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  margin-top: 20px;
-}
-
-.report-stats {
+/* ==========================================================================
+   TELA DE LOGIN
+   ========================================================================== */
+.login-screen {
   display: flex;
-  justify-content: space-around;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-container {
+  background-color: #fefbf2;
+  padding: 50px;
+  border-radius: 25px;
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.login-logo {
+  width: 100px;
+  height: auto;
   margin-bottom: 20px;
+}
+
+.login-title {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+}
+
+.login-container form input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #a36c2f;
+  border-radius: 15px;
+  background-color: transparent;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.login-container form button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  background-color: #f7dca3;
+  color: #a36c2f;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   LAYOUT DO PAINEL PRINCIPAL
+   ========================================================================== */
+.main-dashboard {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  padding: 0 40px;
+}
+
+.column-left { flex: 1; display: flex; flex-direction: column; gap: 30px; }
+.column-right { flex: 2; display: flex; flex-direction: column; gap: 30px; }
+
+/* ==========================================================================
+   CONTAINERS DE CONTEÚDO (A "CAIXA" PADRÃO)
+   ========================================================================== */
+.content-box {
+  background-color: #f9f8ed;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.content-box-title {
+  font-size: 1.8em;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+/* ==========================================================================
+   ESTILOS DE FORMULÁRIO (Cadastrar Produto, etc.)
+   ========================================================================== */
+.styled-form input, .styled-form select {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #e0d9c8;
+  padding: 15px 5px;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  color: #a36c2f;
+  font-family: "Times New Roman", Times, serif;
+  box-sizing: border-box;
+}
+
+.styled-form button {
+  display: block;
+  margin: 20px auto 0 auto;
+  padding: 12px 30px;
+  background-color: #f6dc9b;
+  color: #a36c2f;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   ESTILOS DE TABELA (Lista de Produtos, etc.)
+   ========================================================================== */
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 7px 10px;
+}
+
+.data-table th {
+  background-color: #f6dc9b;
+  padding: 10px;
+  font-size: 1em;
+  font-weight: normal;
+  border-radius:0 px;
+}
+
+.data-table td {
+  background-color: #f3f1e7;
+  padding: 15px;
+  text-align: center;
+  border-radius: 0px;
+}
+
+/* ==========================================================================
+   PAINEL DE RELATÓRIOS GERENCIAIS
+   ========================================================================== */
+.report-title {
+  text-align: center;
+  font-size: 1.8em;
+  margin: 0;
+}
+
+.statistics-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 40px;
+  margin: 30px 0;
 }
 
 .stat-card {
-  background-color: var(--pastel-yellow-light);
-  border: 1px solid var(--pastel-yellow-medium);
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
   flex: 1;
+  text-align: center;
 }
 
 .stat-card h3 {
-  color: var(--pastel-yellow-dark);
-  margin-top: 0;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  font-weight: normal;
 }
 
-.stat-card p {
-  font-size: 1.5em;
+.value-box {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  font-size: 1.2em;
+}
+
+.divider {
+  width: 1px;
+  background-color: #e0d9c8;
+}
+
+/* Em src/App.css (adicionar no final) */
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 20px;
+}
+
+
+.nav-button {
+  position: relative; /* Essencial para a linha se posicionar corretamente */
+  background: none;
+  border: none;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.2em;
+  color: #a36c2f;
+  cursor: pointer;
+  padding-bottom: 5px;
+}
+
+/* A linha animada é criada aqui */
+.nav-button::after {
+  content: '';
+  position: absolute;
+  width: 0%; /* Começa com largura zero */
+  height: 2px;
+  background-color: #a36c2f;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%); /* Centraliza a linha */
+  transition: width 0.3s ease-in-out; /* Anima a propriedade 'width' */
+}
+
+/* Quando o botão está ativo, a linha cresce para 100% */
+.nav-button.active::after {
+  width: 100%;
+}
+
+.nav-button.active {
   font-weight: bold;
-  color: var(--text-color);
+} 
+
+.nav-button.active {
+  border-bottom-color: #a36c2f; /* Destaca o botão ativo */
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   ANIMAÇÃO DE TRANSIÇÃO DE TELA
+   ========================================================================== */
+
+/* Define a animação: começa transparente e um pouco para baixo */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplica a animação ao container principal do conteúdo */
+.main-dashboard {
+  animation: fadeInUp 0.5s ease-in-out;
 }

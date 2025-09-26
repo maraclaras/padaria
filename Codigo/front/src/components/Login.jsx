@@ -15,28 +15,27 @@ function Login({ onLogin }) {
   };
   
   return (
-    <div className="login-container">
-      <h2>Login do Administrador</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Usuário:</label>
+    <div className="login-screen">
+      <div className="login-container">
+        <img src="/logo.png" alt="Logo da Padaria" className="login-logo" />
+        <h2 className="login-title">Login Administrador</h2>
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
+            placeholder="Usuário"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-        </div>
-        <div>
-          <label>Senha:</label>
           <input
             type="password"
+            placeholder="Senha"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
-        <button type="submit">Entrar</button>
-        {error && <p className="error">{error}</p>}
-      </form>
+          <button type="submit">Entrar</button>
+          {error && <p className="error">{error}</p>}
+        </form>
+      </div>
     </div>
   );
 }
