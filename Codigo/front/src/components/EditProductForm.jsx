@@ -7,11 +7,15 @@ function EditProductForm({ products, onSave }) {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
+    // Busca o produto pelo ID (garantindo que o ID seja um número)
     const productToEdit = products.find(p => p.id === parseInt(productId));
     if (productToEdit) {
       setProduct(productToEdit);
+    } else {
+      // Caso não encontre, redireciona para a lista
+      navigate('/'); 
     }
-  }, [productId, products]);
+  }, [productId, products, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,72 +25,82 @@ function EditProductForm({ products, onSave }) {
   const handleSave = (e) => {
     e.preventDefault();
     if (product.name && product.costPrice && product.salePrice) {
-      onSave(product);
+      // Garante que o ID do produto editado seja mantido
+      onSave({ ...product, id: parseInt(productId) });
     }
   };
 
   const handleCancel = () => {
-    navigate('/manage');
+    navigate('/');
   };
 
   if (!product) {
-    return <div>Produto não encontrado.</div>;
+    return (
+        <div className="edit-container-layout">
+            <div className="content-box">
+                <div>Carregando ou produto não encontrado...</div>
+            </div>
+        </div>
+    );
   }
 
   return (
-    <div className="edit-container">
-      <h2>Editar Produto</h2>
-      <form onSubmit={handleSave}>
-        <div>
-          <label>Nome do Produto</label>
-          <input
-            type="text"
-            name="name"
-            value={product.name}
-            onChange={handleChange}
-          />
+    // Usa classes existentes para estilização
+    <div className="edit-container-layout">
+        <div className="content-box">
+            <h2 className="content-box-title">Editar Produto: {product.name}</h2>
+            <form onSubmit={handleSave} className="styled-form">
+                <div>
+                    <label>Nome do Produto</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={product.name}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label>Categoria</label>
+                    <input
+                        type="text"
+                        name="category"
+                        value={product.category}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label>Preço de Custo</label>
+                    <input
+                        type="number"
+                        name="costPrice"
+                        value={product.costPrice}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label>Preço de Venda</label>
+                    <input
+                        type="number"
+                        name="salePrice"
+                        value={product.salePrice}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label>Data de Vencimento</label>
+                    <input
+                        type="date"
+                        name="expiryDate"
+                        value={product.expiryDate}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="button-group-edit"> {/* Nova classe para agrupar botões */}
+                    <button type="submit" className="save-button">Salvar Alterações</button>
+                    <button type="button" onClick={handleCancel} className="cancel-button">Cancelar</button>
+                </div>
+            </form>
         </div>
-        <div>
-          <label>Categoria</label>
-          <input
-            type="text"
-            name="category"
-            value={product.category}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Preço de Custo</label>
-          <input
-            type="number"
-            name="costPrice"
-            value={product.costPrice}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Preço de Venda</label>
-          <input
-            type="number"
-            name="salePrice"
-            value={product.salePrice}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Data de Vencimento</label>
-          <input
-            type="date"
-            name="expiryDate"
-            value={product.expiryDate}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="button-group">
-          <button type="submit">Salvar Alterações</button>
-          <button type="button" onClick={handleCancel}>Cancelar</button>
-        </div>
-      </form>
     </div>
   );
 }

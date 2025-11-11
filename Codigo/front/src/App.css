@@ -276,3 +276,89 @@
 .main-dashboard {
   animation: fadeInUp 0.5s ease-in-out;
 }
+
+/* ==========================================================================
+   ESTILOS ESPECÍFICOS DA TELA DE EDIÇÃO
+   ========================================================================== */
+
+/* Layout para centralizar o formulário de edição na tela */
+.edit-container-layout {
+  width: 100%;
+  max-width: 600px; /* Largura máxima para a caixa de edição */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  padding: 0 40px; /* Mantém o padding lateral */
+}
+
+/* Garante que o input do formulário mantenha o estilo, mas com labels */
+.styled-form label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #a36c2f;
+}
+
+/* Grupo de botões de Salvar e Cancelar */
+.button-group-edit {
+  display: flex;
+  justify-content: space-between; /* Espaça os botões */
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.button-group-edit button {
+  flex: 1; /* Faz com que os botões ocupem o mesmo espaço */
+  margin: 0; /* Remove a margem 'auto' que estava centralizando */
+  padding: 12px 20px;
+  border-radius: 15px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.save-button {
+  background-color: #f7dca3; /* Cor primária do projeto */
+  color: #a36c2f;
+}
+
+.cancel-button {
+  background-color: #e0d9c8; /* Cor secundária/neutra */
+  color: #a36c2f;
+}
+
+/*==========================================================================
+   ESTILOS ESPECÍFICOS DE AÇÕES NAS TABELAS (EDITAR/EXCLUIR)
+   ========================================================================== */
+
+/* Célula para agrupar botões */
+.actions-cell {
+  display: flex;
+  gap: 10px; /* Espaçamento entre os botões */
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Garante que a célula ocupe toda a altura da linha */
+}
+
+/* Estilo base para os botões de ação nas tabelas */
+.action-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9em;
+  cursor: pointer;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+/* Estilo para o botão de Edição (reutilizado do ProductList.jsx) */
+.action-button.edit-button {
+  background-color: #f6dc9b; /* Um tom amarelo/bege */
+  color: #a36c2f;
+}
+
+/* Estilo para o botão de Exclusão */
+.action-button.delete-button {
+  background-color: #a36c2f; /* Cor de erro/alerta */
+  color: #ffffff;
+}
