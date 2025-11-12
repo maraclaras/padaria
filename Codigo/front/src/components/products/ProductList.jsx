@@ -1,12 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Adicionado onDeleteProduct nas props
+// O componente agora foca apenas na exibição da tabela, recebendo produtos filtrados/paginados
 function ProductList({ products, onDeleteProduct }) {
+  // Se a lista estiver vazia, exibe uma mensagem
+  if (products.length === 0) {
+      return <p style={{textAlign: 'center', margin: '20px 0'}}>Nenhum produto encontrado com os filtros aplicados.</p>;
+  }
+    
   return (
-    <div className="content-box">
-      <h2 className="content-box-title">Lista de Produtos</h2>
-      <table className="data-table">
+    // Removido o content-box e o título, que agora são responsabilidade do container pai
+    <table className="data-table">
         <thead>
           <tr>
             <th>Nome</th>
@@ -14,7 +18,7 @@ function ProductList({ products, onDeleteProduct }) {
             <th>Preço de Custo</th>
             <th>Preço de Venda</th>
             <th>Data de Vencimento</th>
-            <th style={{width: '150px'}}>Ações</th> {/* Ajusta largura para acomodar 2 botões */}
+            <th style={{width: '150px'}}>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -29,7 +33,6 @@ function ProductList({ products, onDeleteProduct }) {
                 <Link to={`/edit/${product.id}`} className="action-button edit-button">
                     Editar
                 </Link>
-                {/* Botão de Excluir */}
                 <button 
                     onClick={() => onDeleteProduct(product.id)} 
                     className="action-button delete-button"
@@ -41,7 +44,6 @@ function ProductList({ products, onDeleteProduct }) {
           ))}
         </tbody>
       </table>
-    </div>
   );
 }
 

@@ -11,7 +11,7 @@
 }
 
 .app-title {
-  font-size: 2.8em;
+  font-size: 2.2em;
   font-weight: bold;
   margin: 0;
 }
@@ -84,14 +84,22 @@
    LAYOUT DO PAINEL PRINCIPAL
    ========================================================================== */
 .main-dashboard {
-  display: flex;
+  display: flex; /* ESTILO PADRÃO: Flex para as páginas Produtos/Desperdício */
   gap: 30px;
   align-items: flex-start;
   padding: 0 40px;
+  /* A animação fadeInUp foi removida daqui, pois já estava no final do arquivo na versão anterior */
 }
 
 .column-left { flex: 1; display: flex; flex-direction: column; gap: 30px; }
 .column-right { flex: 2; display: flex; flex-direction: column; gap: 30px; }
+
+/* NOVO ESTILO: Sobrescreve o layout para o Dashboard (Tela Única, Largura Total) */
+.main-dashboard.dashboard-page-layout {
+  display: block; /* Desativa o flex */
+  padding: 0; /* Permite que o container interno do Dashboard controle o padding */
+}
+
 
 /* ==========================================================================
    CONTAINERS DE CONTEÚDO (A "CAIXA" PADRÃO)
@@ -361,4 +369,431 @@
 .action-button.delete-button {
   background-color: #a36c2f; /* Cor de erro/alerta */
   color: #ffffff;
+}
+
+
+/* ==========================================================================
+   ESTILOS DO PAINEL PRINCIPAL (DASHBOARD)
+   ========================================================================== */
+.dashboard-layout {
+  padding: 0 40px; /* Mantém o espaçamento geral */
+}
+
+.dashboard-title {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #a36c2f;
+}
+
+.dashboard-row {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+  align-items: stretch; /* Garante que caixas na linha tenham a mesma altura */
+}
+
+/* --- Estilos para KPIs --- */
+.kpi-container {
+  flex: 2;
+  display: flex;
+  gap: 20px;
+}
+
+.kpi-card {
+  flex: 1;
+  background-color: #f9f8ed;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.kpi-card h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.1em;
+  color: #a36c2f;
+  font-weight: normal;
+}
+
+.kpi-value {
+  font-size: 2em;
+  font-weight: bold;
+  color: #5c3c1e; /* Cor mais escura para destaque */
+}
+
+.kpi-value.loss {
+  color: #d32f2f; /* Vermelho para perdas */
+}
+
+/* --- Estilos para Alertas --- */
+.alert-box {
+  flex: 1;
+  background-color: #ffe0b2; /* Cor mais suave para alertas */
+  border: 1px solid #ff9800;
+}
+
+.alert-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.alert-item {
+  background-color: #fff3e0;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  color: #5c3c1e;
+}
+
+.no-alert {
+  color: #5c3c1e;
+  text-align: center;
+  font-style: italic;
+}
+
+
+/* --- Estilos para Atividade Recente --- */
+.activity-row {
+  align-items: flex-start;
+}
+
+.activity-box {
+  flex: 1;
+}
+
+.activity-box h3 {
+  border-bottom: 1px solid #e0d9c8;
+  padding-bottom: 10px;
+}
+
+.activity-list {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.activity-list li {
+  margin-bottom: 8px;
+  color: #5c3c1e;
+}
+
+/* ==========================================================================
+   LAYOUT DE GERENCIAMENTO DE CATEGORIAS (Duas Colunas Centrais)
+   ========================================================================== */
+
+/* 1. Container de Centralização */
+.category-management-container {
+    width: 100%;
+    max-width: 1200px; /* Largura máxima para centralizar */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+/* 2. Container Flex (as duas colunas) */
+.category-management-flex-content {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    padding: 0 40px; /* Adiciona o padding para manter o espaçamento lateral */
+}
+
+.category-form-box {
+    flex: 1; /* Coluna esquerda (Formulário) */
+    max-width: 400px; 
+}
+
+.category-list-box {
+    flex: 2; /* Coluna direita (Lista) */
+}
+
+/* Ocultar a label temporariamente para o formulário simples de Categoria */
+.category-form-box .styled-form label {
+    display: none;
+}
+
+/* ==========================================================================
+   ESTILOS DE BUSCA E FILTRAGEM AVANÇADA
+   ========================================================================== */
+.advanced-list-container {
+    width: 100%;
+    padding: 0 40px;
+}
+
+.filter-bar {
+    margin-bottom: 20px;
+}
+
+.filter-grid {
+    display: grid;
+    /* Mantém 4 colunas para a grelha de filtros principais */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Estilo para inputs de formulário serem usados como filtros */
+.filter-bar input, .filter-bar select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e0d9c8;
+    border-radius: 8px;
+    background-color: #f3f1e7;
+    font-size: 1em;
+    color: #a36c2f;
+    box-sizing: border-box;
+}
+
+/* Ajustes para o LABEL de data */
+.filter-grid > label {
+    grid-column: span 1;
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #5c3c1e;
+    justify-content:center; 
+}
+
+/* Ajuste fino para os inputs de data para serem consistentes */
+.filter-grid input[type="date"] {
+    padding: 10px; 
+    line-height: 1.5;
+    height: auto; 
+}
+
+
+.sort-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    border-top: 1px solid #e0d9c8;
+    padding-top: 20px;
+}
+
+.sort-controls button.clear-button {
+    background-color: #fefbf2; /* Cor clara para Limpar */
+    color: #a36c2f;
+    border: 1px solid #e0d9c8;
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.product-list-results {
+    padding: 20px; 
+}
+
+/* Estilos para Paginação */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.pagination-controls button {
+    background-color: #f6dc9b;
+    color: #a36c2f;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.pagination-controls button:disabled {
+    background-color: #e0d9c8;
+    cursor: not-allowed;
+}
+
+/* ==========================================================================
+   LAYOUT DE GERENCIAMENTO DE USUÁRIOS
+   ========================================================================== */
+.action-button.action-button-reset {
+    background-color: #a36c2f; /* Cor primária do tema */
+    color: #ffffff;
+}
+.action-button.delete-button{
+      background-color: #a01604; /* Cor primária do tema */
+    color: #ffffff;
+}
+/* 1. Container de Centralização */
+.user-management-container {
+    width: 100%;
+    max-width: 1300px; /* Largura máxima do bloco */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    padding: 20px 40px; /* Garante que não fique grudado nas bordas da tela */
+}
+
+/* 2. Container Flex (os dois sub-blocos: Formulário e Lista) */
+.user-management-flex-content {
+    display: flex;
+    gap: 30px; /* Espaçamento entre as duas colunas (Formulário e Tabela) */
+    align-items: flex-start;
+}
+
+.user-form-box {
+    flex: 1; 
+    max-width: 400px; /* Limita a largura do formulário */
+}
+
+.user-list-box {
+    flex: 2; 
+}
+
+/* Ajustes de formulário específicos para a tela de usuários */
+.user-form-box .styled-form input[type="text"],
+.user-form-box .styled-form input[type="password"] {
+    margin-bottom: 20px;
+}
+
+.form-checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: -10px; 
+    margin-bottom: 20px;
+}
+
+.form-checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px; /* Espaçamento superior reduzido para aproximar do input de senha */
+    margin-bottom: 20px;
+}
+
+/* NOVO: Reset de estilos para o checkbox, que tende a herdar margens indesejadas */
+.form-checkbox-group input[type="checkbox"] {
+    width: auto !important; /* Força largura automática */
+    margin: 0 !important;   /* Remove margens extras */
+    padding: 0;
+    border: 1px solid #a36c2f !important;
+}
+
+/* ==========================================================================
+   ANIMAÇÃO DE TRANSIÇÃO DE TELA
+   ========================================================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ==========================================================================
+   AJUSTES DE LAYOUT E ESTILO (KPIs e Modal)
+   ========================================================================== */
+
+/* 1. Layout de KPI no Dashboard (6 cards em uma linha) */
+.kpi-container.full-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Divide em 6 colunas iguais */
+    gap: 15px; /* Espaçamento menor entre os cards */
+    flex: none; /* Desativa o flex antigo */
+    width: 100%;
+}
+
+.kpi-card.full-row {
+    padding: 15px 10px; /* Padding menor */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.kpi-card.full-row h4 {
+    font-size: 0.75em; /* Ajuste fino para garantir que caiba */
+    margin-bottom: 5px;
+    line-height: 1.1;
+    white-space: nowrap; /* Impede a quebra de linha do título */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adiciona reticências se o texto for muito longo */
+}
+
+.kpi-card.full-row .kpi-value {
+    font-size: 1.5em; /* Valor menor */
+    margin-top: 5px;
+}
+
+/* 2. Estilo do Botão de Ação (Cadastrar Venda) */
+.action-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.action-button.primary {
+    background-color: #a36c2f; /* Cor primária do projeto */
+    color: #f3f1e7; /* Cor de texto clara */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.action-button.primary:hover {
+    background-color: #5c3c1e; /* Cor mais escura no hover */
+}
+
+/* 3. Estilo do Modal (Popup) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo mais escuro para garantir o efeito popup */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Garante que fique acima de tudo */
+}
+
+.modal-content {
+    background-color: #fefbf2; /* Cor de fundo clara do login/container */
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px; /* Tamanho padrão para formulários */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #a36c2f;
+}
+
+.modal-title {
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #a36c2f;
+    text-align: center;
+}
+
+/* 4. Layout de Página de Largura Total (Vendas) */
+.full-width-layout {
+    padding: 0 40px; /* Mantém o padding lateral */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Correção de Layout para a linha de KPI */
+.dashboard-row.kpi-row {
+  display: block; /* Desativa o flex para a linha de KPI */
 }
